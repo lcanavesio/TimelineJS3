@@ -33,6 +33,7 @@ import PDF from "./types/PDF"
 import Audio from "./types/Audio"
 import Video from "./types/Video"
 import Wistia from "./types/Wistia"
+import Facebook from "./types/Facebook"
 
 /**
  * Given a JavaScript Object for an event from a TimelineConfig,
@@ -55,7 +56,14 @@ import Wistia from "./types/Wistia"
 
 export function lookupMediaType(m, image_only) {
     var media = {},
-        media_types = [{
+        media_types = [
+            {
+                type: "facebook",
+                name: "Facebook",
+                match_str: "^(https?:)?\/*(www.)?facebook.com.{3,}(videos|posts).\d*",
+                cls: Facebook
+            },
+            {
                 type: "youtube",
                 name: "YouTube",
                 match_str: "^(https?:)?\/*(www.)?youtube|youtu\.be",
